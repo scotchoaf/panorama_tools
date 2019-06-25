@@ -44,7 +44,7 @@ variables:
 snippets:
   - name: skillet_panorama_dgstack_notshared_v90
   - name: internet_gateway_base_panorama_v90_no_ext
-  - name: {{ tier }}_panorama_v90_no_ext
+  - name: gold_panorama_v90_no_ext
   - name: ngfw_content_update_w_panorama
   - name: panorama_move_device
 
