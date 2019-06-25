@@ -163,7 +163,7 @@ def main():
         parser.exit()
         exit(1)
 
-    panorama_ip = args.panorama
+    panorama_ip = args.panorama_ip
     username = args.username
     password = args.password
     serial_number = args.serial_number
