@@ -1,6 +1,6 @@
 name: panorama_move_device
 # label used for menu selection
-label: NGFW Content Updates
+label: Panorama move device
 
 description: |
   This skillet will use the panorama api to move a device to a new device-group and template stack
