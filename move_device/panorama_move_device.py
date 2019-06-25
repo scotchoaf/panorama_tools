@@ -126,14 +126,42 @@ def move_ts(pano, sn, from_ts, to_ts):
     print('adding firewall {0} to stack {1}...'.format(sn, to_ts))
     pano.set(xpath, element)
 
-def commit(pano):
+def commit(pano, sn, to_ts, to_dg):
     '''
     commit to panorama after move is complete
     :param pano: 
     :return: 
     '''
+
+    # commit changes to panorama
     cmd = '<commit></commit>'
+    print('commit to panorama')
     pano.commit(cmd=cmd)
+    results = pano.xml_result()
+
+    if '<job>' in results:
+        check_job_status(pano, results)
+
+
+    # template stack commit
+    cmd_ts = '<commit-all><template-stack><force-template-values>yes</force-template-values>' \
+          '<device><member>{0}</member></device>' \
+          '<name>{1}</name></template-stack></commit-all>'.format(sn, to_ts)
+
+    print('commit for template stack')
+    pano.commit(action='all', cmd=cmd_ts)
+    results = pano.xml_result()
+
+    if '<job>' in results:
+        check_job_status(pano, results)
+
+    # device group commit
+    cmd_dg = "<commit-all><shared-policy><force-template-values>yes</force-template-values>" \
+             "<device-group><entry name='{0}'><devices><entry name='{1}'/></devices></entry>" \
+             "</device-group></shared-policy></commit-all>".format(to_dg, sn)
+
+    print('commit for device-group')
+    pano.commit(action='all', cmd=cmd_dg)
     results = pano.xml_result()
 
     if '<job>' in results:
@@ -184,8 +212,8 @@ def main():
     print('moving template-stack for NGFW serial number {0}'.format(serial_number))
     move_ts(panorama, serial_number, from_ts, to_ts)
 
-    print('commit to Panorama')
-    commit(panorama)
+    print('commit to Panorama and push to device {0}'.format(serial_number))
+    commit(panorama, serial_number, to_ts, to_dg)
 
 
 if __name__ == '__main__':
