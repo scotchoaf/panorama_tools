@@ -1,9 +1,9 @@
-name: workflow_update_and_move
+name: workflow_configure_update_and_move
 # label used for menu selection
-label: Content Updates then Move Device
+label: Configure GSB then Content Updates then Move Device
 
 description: |
-  for a specific serial number, update content and then move from staging
+  configure dg and stack then for a specific serial number, update content and then move from staging
 
 # type of skillet (panos or panorama or template or terraform)
 type: workflow
@@ -18,14 +18,22 @@ labels:
   collection:
     - Panorama
     - Configure
+    - MSSP
 
 # variables define the things an operator may customize in this skillet. Things like DNS servers, NTP addresses, etc
 # may be customized for each deployment. Each variable will be rendered as a form field in the panhandler application
 variables:
-  - name: serial_number
-    description: device serial number
-    default: abc123
-    type_hint: text
+  - name: tier
+    description: Gold-Silver-Bronze service tier
+    default: gold
+    type_hint: dropdown
+    dd_list:
+          - key: gold
+            value: gold
+          - key: silver
+            value: silver
+          - key: bronze
+            value: bronze
 
 
 
@@ -34,6 +42,9 @@ variables:
 # to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
 # in the 'variables' section.
 snippets:
+  - name: skillet_panorama_dgstack_notshared_v90
+  - name: internet_gateway_base_panorama_v90_no_ext
+  - name: {{ tier }}_panorama_v90_no_ext
   - name: ngfw_content_update_w_panorama
   - name: panorama_move_device
 
