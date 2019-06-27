@@ -42,10 +42,15 @@ variables:
 # to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
 # in the 'variables' section.
 snippets:
+# from repo https://github.com/PaloAltoNetworks/iron-skillet.git, branch 90dev
   - name: skillet_panorama_dgstack_notshared_v90
+# from repo https://github.com/PaloAltoNetworks/mssp-templates.git, branch panos_v9.0_no_ext
   - name: internet_gateway_base_panorama_v90_no_ext
+# from repo https://github.com/PaloAltoNetworks/mssp-templates.git, branch panos_v9.0_no_ext
   - name: gold_panorama_v90_no_ext
+# from repo https://github.com/scotchoaf/fw_content_update.git, branch master
   - name: ngfw_content_update_w_panorama
+# from repo https://github.com/scotchoaf/panorama_tools.git, branch master
   - name: panorama_move_device
 
 

@@ -143,7 +143,8 @@ def commit(pano, sn, to_ts, to_dg):
         check_job_status(pano, results)
 
 
-    # template stack commit
+    # template stack push to device
+    # pushing first to ensure no commit errors for object references
     cmd_ts = '<commit-all><template-stack><force-template-values>yes</force-template-values>' \
           '<device><member>{0}</member></device>' \
           '<name>{1}</name></template-stack></commit-all>'.format(sn, to_ts)
@@ -155,7 +156,7 @@ def commit(pano, sn, to_ts, to_dg):
     if '<job>' in results:
         check_job_status(pano, results)
 
-    # device group commit
+    # device group push to device
     cmd_dg = "<commit-all><shared-policy><force-template-values>yes</force-template-values>" \
              "<device-group><entry name='{0}'><devices><entry name='{1}'/></devices></entry>" \
              "</device-group></shared-policy></commit-all>".format(to_dg, sn)
