@@ -177,9 +177,9 @@ def main():
     # python skillets currently use CLI arguments to get input from the operator / user. Each argparse argument long
     # name must match a variable in the .meta-cnc file directly
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--panorama_ip", help="IP address of Panorama", type=str)
-    parser.add_argument("-u", "--username", help="Panorama Username", type=str)
-    parser.add_argument("-p", "--password", help="Panorama Password", type=str)
+    parser.add_argument("-d", "--TARGET_IP", help="IP address of Panorama", type=str)
+    parser.add_argument("-u", "--TARGET_USER", help="Panorama Username", type=str)
+    parser.add_argument("-p", "--TARGET_PASSWORD", help="Panorama Password", type=str)
     parser.add_argument("-s", "--serial_number", help="Firewall Serial Number", type=str)
     parser.add_argument("-fs", "--from_ts", help="Stack moving from", type=str)
     parser.add_argument("-fd", "--from_dg", help="Device Group moving from", type=str)
@@ -192,9 +192,9 @@ def main():
         parser.exit()
         exit(1)
 
-    panorama_ip = args.panorama_ip
-    username = args.username
-    password = args.password
+    panorama_ip = args.TARGET_IP
+    username = args.TARGET_USER
+    password = args.TARGET_PASSWORD
     serial_number = args.serial_number
     from_ts=args.from_ts
     from_dg=args.from_dg
