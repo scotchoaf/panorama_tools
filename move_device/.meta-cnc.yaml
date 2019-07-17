@@ -25,7 +25,7 @@ variables:
     description: Panorama IP or Hostname
     default: 192.168.55.10
     type_hint: fqdn_or_ip
-  - name: TARGET_USER
+  - name: TARGET_USERNAME
     description: NGFW Username
     default: admin
     type_hint: text
@@ -33,25 +33,25 @@ variables:
     description: NGFW Password
     default:
     type_hint: password
+  - name: serial_number
+    description: NGFW serial number
+    default: 1234
+    type_hint: text
   - name: from_dg
     description: Current Device Group to move from
-    default: staging
-    type_hint: text
-  - name: from_ts
-    description: Current Template Stack to move from
     default: staging
     type_hint: text
   - name: to_dg
     description: Device Group to move to
     default: dg1
     type_hint: text
+  - name: from_ts
+    description: Current Template Stack to move from
+    default: staging
+    type_hint: text
   - name: to_ts
     description: Template Stack to move to
     default: ts1
-    type_hint: text
-  - name: serial_number
-    description: serial number of device to move
-    default: 1234
     type_hint: text
 
 

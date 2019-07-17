@@ -1,9 +1,9 @@
-name: ngfw_content_update_w_panorama
+name: get_hostname_from_sn
 # label used for menu selection
-label: NGFW Content Updates using Panorama Target
+label: Get device hostname using serial number
 
 description: |
-  This skillet will use the Panorama API to check, download, and install latest updates to a target firewall
+  This skillet will query Panorama to get the device hostname using serial number input
 
 type: python3
 
@@ -44,5 +44,5 @@ variables:
 # to load and parse. Jinja2 style variables will be variable interpolated using the values of the 'variables' defined
 # in the 'variables' section.
 snippets:
-  - name: content_update_w_panorama
-    file: content_update_w_panorama.py
+  - name: get_hostname_from_sn
+    file: get_hostname_from_sn.py

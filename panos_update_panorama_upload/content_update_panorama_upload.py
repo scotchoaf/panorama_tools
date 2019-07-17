@@ -138,9 +138,9 @@ def main():
     # python skillets currently use CLI arguments to get input from the operator / user. Each argparse argument long
     # name must match a variable in the .meta-cnc file directly
     parser = argparse.ArgumentParser()
-    parser.add_argument("-d", "--panorama", help="IP address of Panorama", type=str)
-    parser.add_argument("-u", "--username", help="Panorama Username", type=str)
-    parser.add_argument("-p", "--password", help="Panorama Password", type=str)
+    parser.add_argument("-f", "--TARGET_IP", help="IP address of Panorama", type=str)
+    parser.add_argument("-u", "--TARGET_USERNAME", help="Panorama Username", type=str)
+    parser.add_argument("-p", "--TARGET_PASSWORD", help="Panorama Password", type=str)
     parser.add_argument("-s", "--serial_number", help="Firewall Serial Number", type=str)
     args = parser.parse_args()
 
@@ -150,9 +150,9 @@ def main():
         exit(1)
 
     # this is actually the panorama ip and will fix
-    fw_ip = args.panorama
-    username = args.username
-    password = args.password
+    fw_ip = args.TARGET_IP
+    username = args.TARGET_USERNAME
+    password = args.TARGET_PASSWORD
     serial_number = args.serial_number
 
     # create fw object using pan-python class
